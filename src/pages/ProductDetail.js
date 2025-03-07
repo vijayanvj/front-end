@@ -11,7 +11,7 @@ export default function ProductDetail({cartItems, setCartItems}) {
         fetch(`${process.env.REACT_APP_API_URL}/product/${id}`)
             .then(res => res.json())
             .then(res => setProduct(res.product));
-    }, [id, process.env.REACT_APP_API_URL]); // Added dependencies
+    }, [id]); // Added dependencies
     
 
     function addToCart() {

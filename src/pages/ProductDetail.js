@@ -8,10 +8,11 @@ export default function ProductDetail({cartItems, setCartItems}) {
     const {id} = useParams();
 
     useEffect(() => {
-        fetch(process.env.REACT_APP_API_URL+'/product/'+id)
-        .then(res => res.json())
-        .then( res => setProduct(res.product))
-    },[])
+        fetch(`${process.env.REACT_APP_API_URL}/product/${id}`)
+            .then(res => res.json())
+            .then(res => setProduct(res.product));
+    }, [id, process.env.REACT_APP_API_URL]); // Added dependencies
+    
 
     function addToCart() {
         const itemExist = cartItems.find((item) => item.product._id == product._id)
